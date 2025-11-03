@@ -3,7 +3,6 @@
     "name": "expo-invite-app",
     "slug": "expo-invite-app",
     "version": "1.0.0",
-
     "scheme": "expo-invite-app",
     "platforms": ["ios", "android"],
     "web": {
@@ -14,15 +13,11 @@
     "plugins": ["expo-router"],
     "experiments": {
       "typedRoutes": true,
-
       "tsconfigPaths": true
     },
-
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-
-    "userInterfaceStyle": "light",
-
+    "userInterfaceStyle": "dark",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
