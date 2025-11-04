@@ -1,5 +1,6 @@
 import { Text, View, Pressable, Image, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { BlurView } from "expo-blur";
 
 export default function Welcome() {
 
@@ -31,28 +32,34 @@ export default function Welcome() {
   ];
 
     return (
-        <SafeAreaView className="flex-1 items-center justify-center bg-yellow-950">
-            <View className="h-3/5 w-full">
-              <ScrollView horizontal>
-                {
-                  events.map((event) => (
-                    <View key={event.id} className="h-full w-96 p-5">
-                      <Image source={event.image} className="h-full w-full rounded-3xl" />
-                    </View>
-                  ))
-                }
-              </ScrollView>
-            </View>
-            <View className="flex-1 justify-center gap-4 p-4">
-                <Text className="text-center text-2xl font-bold text-white/60">Welcome to</Text>
-                <Text className="text-center text-5xl font-bold text-white">hDarioDev Invites</Text>
-                <Text className="text-center text-lg font-bold text-white/60 mb-5">
-                    Create beautiful invitations for your events. Anyone can receive invitations. Share them with the world.
-                </Text>
-                <Pressable className="items-center self-center rounded-full bg-white px-10 py-4">
-                    <Text className="text-lg">Create an Event</Text>
-                </Pressable>
-            </View>
-        </SafeAreaView>
+        <View className="flex-1 items-center justify-center bg-yellow-950">
+            <Image source={ events[0].image } className="absolute w-full h-full" resizeMode="cover" />
+            <View className="absolute w-full h-full bg-black/50" />
+            <BlurView intensity={ 80 }>
+              <SafeAreaView>
+                <View className="h-3/5 w-full">
+                  <ScrollView horizontal>
+                    {
+                      events.map((event) => (
+                        <View key={ event.id } className="h-full w-96 p-5">
+                          <Image source={ event.image } className="h-full w-full rounded-3xl" />
+                        </View>
+                      ))
+                    }
+                  </ScrollView>
+                </View>
+                <View className="flex-1 justify-center gap-4 p-4">
+                    <Text className="text-center text-2xl font-bold text-white/60">Welcome to</Text>
+                    <Text className="text-center text-5xl font-bold text-white">hDarioDev Invites</Text>
+                    <Text className="text-center text-lg font-bold text-white/60 mb-5">
+                        Create beautiful invitations for your events. Anyone can receive invitations. Share them with the world.
+                    </Text>
+                    <Pressable className="items-center self-center rounded-full bg-white px-10 py-4">
+                        <Text className="text-lg">Create an Event</Text>
+                    </Pressable>
+                </View>
+              </SafeAreaView>
+            </BlurView>
+        </View>
     )
 }
